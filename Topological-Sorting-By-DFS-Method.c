@@ -1,7 +1,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 int j=0,pop[10],vis[10];
-
+int dfs(int,int,int [][10]);
+void topo(int,int [][10]);
 int main()
 {
     int i,j,n,a[10][10];
@@ -15,18 +16,20 @@ int main()
     scanf("%d",&a[i][j]);
     }
     }
-    topt(n,a);
+    topo(n,a);
     printf("Topological Order:");
     for(i=n;i>0;i++)
     printf("%d",pop[i]);
+
+    return 0;
 }
 
 int dfs(int u,int n,int a[][10])
 {
     int i,v,top=-1,s[10];
     vis[u]=1;
-    a[++top]=u;
-    while(top!=-1)
+    s[++top]=u;
+    while(top!= -1)
     {
         for(v=1;v<=n;v++)
         {
@@ -41,7 +44,7 @@ int dfs(int u,int n,int a[][10])
                     }
                 }
             }
-            if(a[u][v])==1 && vis[v]==0)
+            if(a[u][v]==1 && vis[v]==0)
             {
                 vis[v]=1;
                 s[++top]=v;
