@@ -4,7 +4,8 @@
 int topo(int,int [][MAX],int [],int []);
 int main()
 {
-    int i,j,m,n,a[MAX][MAX],b[MAX],indegree[MAX];
+    int i,j,m,n;
+    int a[MAX][MAX],b[MAX],indegree[MAX];
     printf("ENTER NO OF VERTICIES\n");
     scanf("%d",&n);
     for(i=1;i<=n;i++)
@@ -41,14 +42,17 @@ int topo(int n,int a[][MAX],int indegree[MAX],int b[MAX])
     int i,j,k=0;
     for(i=1;i<=n;i++)
     {
-        if(indegree[i]==1)
-        b[k++]=i;
-        for(j=1;j<=n;j++)
+        if(indegree[i]==0)
         {
-            if(indegree[j]!=0 && a[i][j]==1)
-            indegree[j]--;
-        }
+            indegree[i]=-1;
+            b[++k]=i;
+            for(j=1;j<=n;j++)
+            {
+                if(indegree[j]!=0 && a[i][j]==1)
+                indegree[j]--;
+            }
         i=0;
+        }
     }
     return k;
 }
