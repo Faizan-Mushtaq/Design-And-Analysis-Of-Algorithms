@@ -6,15 +6,15 @@ void dfs(int,int,int [][MAX]);
 void topo(int,int [][MAX]);
 int main()
 {
-    int i,j,n,a[MAX][MAX];
+    int i,k,n,a[MAX][MAX];
     printf("Enter no of vertices: ");
     scanf("%d",&n);
     printf("Enter adjacency matrix\n");
     for(i=1;i<=n;i++)
     {
-    for(j=1;j<=n;j++)
+    for(k=1;k<=n;k++)
     {
-    scanf("%d",&a[i][j]);
+    scanf("%d",&a[i][k]);
     }
     }
     topo(n,a);
