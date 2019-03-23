@@ -1,11 +1,12 @@
 #include<stdio.h>
 #include<stdlib.h>
-int j=0,pop[10],vis[10];
-void dfs(int,int,int [][10]);
-void topo(int,int [][10]);
+#define MAX 10
+int j=0,pop[MAX],vis[MAX];
+void dfs(int,int,int [][MAX]);
+void topo(int,int [][MAX]);
 int main()
 {
-    int i,j,n,a[10][10];
+    int i,j,n,a[MAX][MAX];
     printf("Enter no of vertices: ");
     scanf("%d",&n);
     printf("Enter adjacency matrix\n");
@@ -19,14 +20,13 @@ int main()
     topo(n,a);
     printf("Topological Order:");
     for(i=n;i>0;i--)
-    printf("%d",pop[i]);
+    printf("%d ",pop[i]);
 
     return 0;
 }
-
-void dfs(int u,int n,int a[][10])
+void dfs(int u,int n,int a[][MAX])
 {
-    int i,v,top=-1,s[10];
+    int i,v,top=-1,s[MAX];
     vis[u]=1;
     s[++top]=u;
     while(top!= -1)
@@ -58,7 +58,7 @@ void dfs(int u,int n,int a[][10])
         u=s[top];
     }
 }
-void topo(int n,int a[][10])
+void topo(int n,int a[][MAX])
 {
     int i,u;
     for(i=1;i<=n;i++)
