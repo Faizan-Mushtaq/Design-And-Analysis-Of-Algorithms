@@ -8,6 +8,9 @@ int main()
 int n,k,answer;
 printf("Enter N & K value: ");
 scanf("%d%d",&n,&k);
+if(n<k){
+printf("N < K :NOT POSSIBLE\n");
+return 0;}
 answer = BinomialCoefficient(n,k);
 printf("\nThe value of C(%d,%d) is %d.\n",n,k,answer);
 return 0;
@@ -19,7 +22,7 @@ return (a > b)? b:a;
 }
 int BinomialCoefficient(int n,int k)
 {
-int i,j,C[n+1][n+1];
+int i,j,C[n+1][k+1];
 for(i = 0;i <= n;i++)
 {
 for(j = 0;j<= min(i,k);j++)
