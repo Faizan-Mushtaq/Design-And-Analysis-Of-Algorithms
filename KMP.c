@@ -41,6 +41,11 @@ void KMPSearch(char* pat, char* txt)
 			else
 				i = i + 1;
 		}
+		else
+		{
+			printf("Pattern not found\n");
+		}
+
 	}
 }
 
