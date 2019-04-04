@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include<stdlib.h>
 #include<string.h>
-int count=0;
+int count=0,flag=0;
 void computeLPSArray(char* pat, int M, int* lps);
 
 // Prints occurrences of txt[] in pat[]
@@ -29,9 +29,10 @@ void KMPSearch(char* pat, char* txt)
 		}
 
 		if (j == M) {
+			flag=1;
 			printf("Found pattern at index %d ", i - j);
 			j = lps[j - 1];
-			//break;
+			break;
 		}
 
 		// mismatch after j matches
@@ -43,10 +44,7 @@ void KMPSearch(char* pat, char* txt)
 			else
 				i = i + 1;
 		}
-		else
-		{
-			printf("Pattern not found\n");
-		}
+
 
 	}
 }
@@ -95,6 +93,8 @@ int main()
 	printf("ENTER PATTERN\n");
 	scanf("%[^\n]s",pat);
 	KMPSearch(pat, txt);
-	printf("\n%d comparisons",count);
+	if (flag==0)
+	printf("PATTERN NOT FOUND\n");
+	printf("\nTHE NO OF COMPARISONS=%d\n",count);
 	return 0;
 }
