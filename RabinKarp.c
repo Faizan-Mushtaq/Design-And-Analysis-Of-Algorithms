@@ -5,7 +5,7 @@ Algorithm given in the CLRS book */
 
 // d is the number of characters in the input alphabet
 #define d 256
-
+int count=0,flag=0;
 /* pat -> pattern
 	txt -> text
 	q -> A prime number
@@ -38,33 +38,34 @@ void search(char pat[], char txt[], int q)
 		// Check the hash values of current window of text
 		// and pattern. If the hash values match then only
 		// check for characters on by one
+		count++;
 		if ( p == t )
 		{
 			/* Check for characters one by one */
 			for (j = 0; j < M; j++)
 			{
+				count++;
 				if (txt[i+j] != pat[j])
 					break;
 			}
-
 			// if p == t and pat[0...M-1] = txt[i, i+1, ...i+M-1]
-			if (j == M)
+			if (j == M){flag=1;
 				printf("Pattern found at index %d \n", i);
+				break;
 		}
-
+	}
 		// Calculate hash value for next window of text: Remove
 		// leading digit, add trailing digit
 		if ( i < N-M )
 		{
 			t = (d*(t - txt[i]*h) + txt[i+M])%q;
-
 			// We might get negative value of t, converting it
 			// to positive
 			if (t < 0)
 			t = (t + q);
 		}
 	}
-	if(j!=M){printf("Pattern not found\n");}
+
 }
 
 /* Driver program to test above function */
@@ -79,5 +80,8 @@ int main()
 	printf("ENTER PATTERN\n");
 	scanf("%[^\n]s",pat);
 	search(pat, txt, q);
+	if(flag==0)
+	printf("PATTERN NOT FOUND\n");
+	printf("NO OF COMPARISONS=%d\n",count);
 	return 0;
 }
