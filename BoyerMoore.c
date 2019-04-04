@@ -3,39 +3,31 @@ Moore String Matching Algorithm */
 # include <limits.h>
 # include <string.h>
 # include <stdio.h>
-
-
 # define NO_OF_CHARS 256
-int flag=0;
+int flag=0,count=0;
 // A utility function to get maximum of two integers
 int max (int a, int b) { return (a > b)? a: b; }
 
 // The preprocessing function for Boyer Moore's
 // bad character heuristic
-void badCharHeuristic( char *str, int size,
-						int badchar[NO_OF_CHARS])
+void badCharHeuristic( char *str, int size,int badchar[NO_OF_CHARS])
 {
 	int i;
-
 	// Initialize all occurrences as -1
 	for (i = 0; i < NO_OF_CHARS; i++)
 		badchar[i] = -1;
-
-	// Fill the actual value of last occurrence
+     // Fill the actual value of last occurrence
 	// of a character
 	for (i = 0; i < size; i++)
 		badchar[(int) str[i]] = i;
 }
-
 /* A pattern searching function that uses Bad
 Character Heuristic of Boyer Moore Algorithm */
 void search( char *txt, char *pat)
 {
 	int m = strlen(pat);
 	int n = strlen(txt);
-
 	int badchar[NO_OF_CHARS];
-
 	/* Fill the bad character array by calling
 	the preprocessing function badCharHeuristic()
 	for given pattern */
@@ -45,6 +37,7 @@ void search( char *txt, char *pat)
 				// respect to text
 	while(s <= (n - m))
 	{
+		count++;
 		int j = m-1;
 
 		/* Keep reducing index j of pattern while
@@ -52,6 +45,7 @@ void search( char *txt, char *pat)
 		matching at this shift s */
 		while(j >= 0 && pat[j] == txt[s+j])
 			j--;
+			count++;
 
 		/* If the pattern is present at current
 		shift, then index j will become -1 after
@@ -59,8 +53,8 @@ void search( char *txt, char *pat)
 		if (j < 0)
 		{
             flag=1;
-			printf("pattern occurs at shift = %d\n", s);
-
+			printf("pattern occurs at index = %d\n",s);
+				break;
 			/* Shift the pattern so that the next
 			character in text aligns with the last
 			occurrence of it in pattern.
@@ -95,6 +89,7 @@ int main()
 	printf("ENTER PATTERN\n");
 	scanf("%[^\n]s",pat);
 	search(txt, pat);
+	printf("NO OF COMPARISONS=%d\n",count);
     if(flag==0)
     printf("Pattern not found\n");
 	return 0;
