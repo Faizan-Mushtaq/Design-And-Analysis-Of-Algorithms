@@ -6,8 +6,7 @@ given text string */
 #include <string.h>
 int flag=0,count=0;
 // preprocessing for strong good suffix rule
-void preprocess_strong_suffix(int *shift, int *bpos,
-								char *pat, int m)
+void preprocess_strong_suffix(int *shift, int *bpos,char *pat, int m)
 {
 	// m is the length of pattern
 	int i=m, j=m+1;
@@ -38,8 +37,7 @@ void preprocess_strong_suffix(int *shift, int *bpos,
 }
 
 //Preprocessing for case 2
-void preprocess_case2(int *shift, int *bpos,
-					char *pat, int m)
+void preprocess_case2(int *shift, int *bpos,char *pat, int m)
 {
 	int i, j;
 	j = bpos[0];
