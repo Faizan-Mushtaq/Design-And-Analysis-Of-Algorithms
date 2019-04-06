@@ -2,14 +2,12 @@
 Algorithm given in the CLRS book */
 #include<stdio.h>
 #include<string.h>
-
 // d is the number of characters in the input alphabet
 #define d 256
 int count=0,flag=0;
 /* pat -> pattern
 	txt -> text
-	q -> A prime number
-*/
+	q -> A prime number*/
 void search(char pat[], char txt[], int q)
 {
 	int M = strlen(pat);
@@ -73,7 +71,7 @@ int main()
 {
 	char txt[100];
 	char pat[100];
-	int q = 101; // A prime number
+	int q = 101; // A prime number to get a strong hash function.
 	printf("ENTER TEXT\n");
 	scanf("%[^\n]s",txt);
 	getchar();
