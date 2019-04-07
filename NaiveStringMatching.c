@@ -20,7 +20,7 @@ void search(char* pat, char* txt)
                 // if pat[0...M-1] = txt[i, i+1, ...i+M-1]
             flag=1;
             printf("Pattern found at index %d \n", i);
-            break;
+            break;//comment break  to find all instances of pattern.
         }
     }
 
