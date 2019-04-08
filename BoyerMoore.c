@@ -33,8 +33,7 @@ void search( char *txt, char *pat)
 	for given pattern */
 	badCharHeuristic(pat, m, badchar);
 
-	int s = 0; // s is shift of the pattern with
-				// respect to text
+	int s = 0; // s is shift of the pattern with respect to text
 	while(s <= (n - m))
 	{
 		count++;
