@@ -32,7 +32,7 @@ void KMPSearch(char* pat, char* txt)
 			flag=1;
 			printf("Found pattern at index %d ", i - j);
 			j = lps[j - 1];
-			break;
+			break;//comment break to find all instances of pattern in text.
 		}
 
 		// mismatch after j matches
