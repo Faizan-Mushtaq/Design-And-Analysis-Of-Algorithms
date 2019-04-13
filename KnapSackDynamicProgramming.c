@@ -18,6 +18,7 @@ int main()
 	scanf("%d",&m);
 	knap(n,m,w,v,p);
 	optimal(n,m,w,v,p);
+	return 0;
 }
 
 int max(int a,int b)
