@@ -18,9 +18,10 @@ int main()
     printf("Enter starting vertex: ");
     scanf("%d",&start);
     printf("BFS traversal of graph: \n");
-    bfs(a,vis,n,start);
+    bfs(a,vis,n,start-1);
     count++;
     printf("Traversal for node %d: ",count);
+    j=0;
     for(i=0;i<n;i++)
     {
         if(vis[i]==0)
