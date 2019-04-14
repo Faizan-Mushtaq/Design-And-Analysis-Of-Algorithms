@@ -1,11 +1,12 @@
 #include<stdio.h>
 #include<stdlib.h>
+#define max 60//change size for bigger capacity
 int max(int a,int b);
-void knap(int n,int m, int w[20],int v[20][20],int p[20]);
-void optimal(int n,int m,int w[20],int v[20][20],int p[20]);
+void knap(int n,int m, int w[max],int v[max][max],int p[max]);
+void optimal(int n,int m,int w[max],int v[max][max],int p[max]);
 int main()
 {
-	int m,n,i,j,p[20],w[20],v[20][20];
+	int m,n,i,j,p[max],w[max],v[max][max];
 	printf("Enter no. of objects:");
 	scanf("%d",&n);
 	printf("Enter weight of %d objects:",n);
@@ -26,7 +27,7 @@ int max(int a,int b)
 	return (a>b?a:b);
 }
 
-void knap(int n,int m, int w[20],int v[20][20],int p[20])
+void knap(int n,int m, int w[max],int v[max][max],int p[max])
 {
 	int i,j;
 	for (i=0;i<=n;i++)
@@ -51,9 +52,9 @@ void knap(int n,int m, int w[20],int v[20][20],int p[20])
 	}
 }
 
-void optimal(int n,int m,int w[20],int v[20][20],int p[20])
+void optimal(int n,int m,int w[max],int v[max][max],int p[max])
 {
-	int i,j,x[20];
+	int i,j,x[max];
 	if (v[n][m]==0)
 	{
 		printf("Not possible!");
