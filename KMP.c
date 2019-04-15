@@ -1,5 +1,4 @@
-// C program for implementation of KMP pattern searching
-// algorithm
+// C program for implementation of KMP pattern searching algorithm
 #include <stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -12,11 +11,9 @@ void KMPSearch(char* pat, char* txt)
 	int M = strlen(pat);
 	int N = strlen(txt);
 
-	// create lps[] that will hold the longest prefix suffix
-	// values for pattern
+// create lps[] that will hold the longest prefix suffix values for pattern
 	int lps[M];
-
-	// Preprocess the pattern (calculate lps[] array)
+// Preprocess the pattern (calculate lps[] array)
 	computeLPSArray(pat, M, lps);
 
 	int i = 0; // index for txt[]
@@ -44,8 +41,6 @@ void KMPSearch(char* pat, char* txt)
 			else
 				i = i + 1;
 		}
-
-
 	}
 }
 
