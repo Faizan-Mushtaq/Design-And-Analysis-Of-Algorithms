@@ -23,19 +23,17 @@ void search(char* pat, char* txt)
             break;//comment break  to find all instances of pattern.
         }
     }
-
 }
-
 /* Driver program to test above function */
 int main()
 {
     char txt[100];
     char pat[100];
     printf("ENTER TEXT\n");
-	scanf("%[^\n]s",txt);
+	scanf("%[^\n]s",txt);//text in which to be searched
 	getchar();
 	printf("ENTER PATTERN\n");
-	scanf("%[^\n]s",pat);
+	scanf("%[^\n]s",pat);//pattern to be searched
     search(pat, txt);
     if(flag==0)
     {
