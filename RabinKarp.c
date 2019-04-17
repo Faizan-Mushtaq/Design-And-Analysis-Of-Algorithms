@@ -16,11 +16,9 @@ void search(char pat[], char txt[], int q)
 	int p = 0; // hash value for pattern
 	int t = 0; // hash value for txt
 	int h = 1;
-
 	// The value of h would be "pow(d, M-1)%q"
 	for (i = 0; i < M-1; i++)
 		h = (h*d)%q;
-
 	// Calculate the hash value of pattern and first
 	// window of text
 	for (i = 0; i < M; i++)
@@ -32,7 +30,6 @@ void search(char pat[], char txt[], int q)
 	// Slide the pattern over text one by one
 	for (i = 0; i <= N - M; i++)
 	{
-
 		// Check the hash values of current window of text
 		// and pattern. If the hash values match then only
 		// check for characters on by one
@@ -65,7 +62,6 @@ void search(char pat[], char txt[], int q)
 	}
 
 }
-
 /* Driver program to test above function */
 int main()
 {
