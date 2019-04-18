@@ -1,5 +1,4 @@
-// C program for Finite Automata Pattern searching
-// Algorithm
+// C program for Finite Automata Pattern searching Algorithm
 #include<stdio.h>
 #include<string.h>
 #define NO_OF_CHARS 256
@@ -10,10 +9,8 @@ int getNextState(char *pat, int M, int state, int x)
 	// in pattern,then simply increment state
 	if (state < M && x == pat[state])
 		return state+1;
-
 	// ns stores the result which is next state
 	int ns, i;
-
 	// ns finally contains the longest prefix
 	// which is also suffix in "pat[0..state-1]c"
     // Start from the largest possible value
@@ -72,10 +69,10 @@ int main()
 	char txt[100];
     char pat[100];
     printf("ENTER TEXT\n");
-	scanf("%[^\n]s",txt);
+	scanf("%[^\n]s",txt);//text in which to be searched
 	getchar();
 	printf("ENTER PATTERN\n");
-	scanf("%[^\n]s",pat);
+	scanf("%[^\n]s",pat);//pattern to be searched
 	search(pat, txt);
 	if(flag==0)
 	printf("PATTERN NOT FOUND\n");
