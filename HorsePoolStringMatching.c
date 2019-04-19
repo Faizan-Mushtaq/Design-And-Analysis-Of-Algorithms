@@ -1,4 +1,3 @@
-
     #include<stdio.h>
     #include<string.h>
     #include<stdlib.h>
@@ -33,10 +32,10 @@
     	char src[100],p[100];
     	int pos;
     	printf("Enter the text in which pattern is to be searched:\n");
-    	scanf("%[^\n]",src);//gets(src);
+    	scanf("%[^\n]",src);//gets(src); better use scanset
     	getchar();
     	printf("Enter the pattern to be searched:\n");
-    	scanf("%[^\n]",p);//gets(p);
+    	scanf("%[^\n]",p);//gets(p); 
     	shifttable(p);
     	pos=horspool(src,p);
     	if(pos>=0)
