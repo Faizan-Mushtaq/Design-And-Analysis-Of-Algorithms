@@ -1,7 +1,6 @@
 /* C program for Boyer Moore Algorithm with
 Good Suffix heuristic to find pattern in
 given text string */
-
 #include <stdio.h>
 #include <string.h>
 int flag=0,count=0;
@@ -111,10 +110,10 @@ int main()
     char txt[100];
     char pat[100];
     printf("ENTER TEXT\n");
-	scanf("%[^\n]s",txt);
+	scanf("%[^\n]s",txt);//text in which to be searched
 	getchar();
 	printf("ENTER PATTERN\n");
-	scanf("%[^\n]s",pat);
+	scanf("%[^\n]s",pat);//pattern to be searched
 	search(txt, pat);
 	printf("NO OF COMPARISONS=%d\n",count);
     if(flag==0)
