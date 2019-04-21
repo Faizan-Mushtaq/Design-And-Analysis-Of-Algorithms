@@ -1,10 +1,11 @@
 #include<stdio.h>
 #include<stdlib.h>
-void bfs(int a[][10],int vis[],int n,int s);
+#define max 10
+void bfs(int a[][max],int vis[],int n,int s);
 int main()
 {
-    int n,i,j,a[10][10],start;
-    int vis[10];
+    int n,i,j,a[max][max],start;
+    int vis[max];
     int count=0;
     printf("Enter no of nodes: ");
     scanf("%d",&n);
@@ -45,10 +46,10 @@ int main()
     }
     return 0;
 }
-void bfs(int a[][10],int vis[],int n,int start)
+void bfs(int a[][max],int vis[],int n,int start)
 {
     int f=0,r=-1,i;
-    int q[10],node;
+    int q[max],node;
     vis[start]=1;
     q[++r]=start;
     while(f<=r)
