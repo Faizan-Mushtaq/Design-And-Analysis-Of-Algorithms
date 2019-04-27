@@ -27,7 +27,7 @@ int main()
     {
         if(vis[i]==0)
         {
-            printf("Traversal for node %d: %d",count+1,i+1);
+            printf("\nTraversal for node %d: %d",count+1,i+1);
             bfs(a,vis,n,i);
             count++;
         }
@@ -42,7 +42,7 @@ int main()
     }
     else
     {
-        printf("Graph is disconneted with %d components\n",count);
+        printf("\nGraph is disconneted with %d components\n",count);
     }
     return 0;
 }
