@@ -16,25 +16,25 @@ int main()
     for(i=0;i<n;i++)
     vis[i]=0;
 
-    printf("Enter starting vertex: ");
+  /* printf("Enter starting vertex: ");
     scanf("%d",&start);
     printf("BFS traversal of graph: \n");
     bfs(a,vis,n,start-1);
     count++;
-    printf("Traversal for node %d: ",count);
+    printf("Traversal for node %d: ",count);*/
     j=0;
     for(i=0;i<n;i++)
     {
         if(vis[i]==0)
         {
-            printf("\nTraversal for node %d: %d",count+1,i+1);
+            printf("\nTraversal for component %d: %d",count+1,i+1);
             bfs(a,vis,n,i);
             count++;
         }
-        else
+        /*else
         {
             printf(" %d",i+1);
-        }
+        }*/
     }
     if (count==1)
     {
@@ -60,6 +60,7 @@ void bfs(int a[][max],int vis[],int n,int start)
             if(a[node][i]==1 && vis[i]==0)
             {
                 vis[i]=1;
+                printf(" %d",i+1);
                 q[++r]=i;
             }
         }
