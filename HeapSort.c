@@ -1,88 +1,75 @@
 #include<stdio.h>
 #include<stdlib.h>
-#define size 1024
 int count;
-void heapify(int [],int);
-void heapsort(int [],int);
+void heapify(int a[],int n,int i)
+{
+    int largest=i;
+    int l=2*i+1;
+    int r=2*i+2;
+    if(l<n && a[l]>a[largest])
+    {
+        largest=l;
+        count++;
+    }
+    if(r<n && a[r]>a[largest])
+    {
+        largest=r;
+        count++;
+    }
+    if(largest!=i)
+    {
+        int temp=a[i];
+        a[i]=a[largest];
+        a[largest]=temp;
+        heapify(a,n,largest);
+    }
+}
+void heapsort(int a[],int n)
+{
+    int i;
+    for(i=n/2;i>=0;i--)
+    heapify(a,n,i);
+
+    for(i=n-1;i>=0;i--)
+    {
+        int temp =a[0];
+        a[0]=a[i];
+        a[i]=temp;
+        heapify(a,i,0);
+    }
+}
 int main()
 {
-    int a[size],i,j,n,c1=0,c2=0,c3=0,b[size],c[size];
-    printf("ENTER THE NO OF ELEMENTS\n");
+    int i,j,n,a[1200],b[1200],c[1200],c1,c2,c3;
+    printf("enter no oif ele:");
     scanf("%d",&n);
-    printf("ENTER ELEMENTS\n");
-    for(i=1;i<=n;i++)
+    printf("enter ele:");
+    for(i=0;i<n;i++)
     scanf("%d",&a[i]);
-    heapify(a,n);
-    printf("ELEMENTS AFTER HEAPIFY\n");
-    for(i=1;i<=n;i++)
-    printf("%d ",a[i]);
-    printf("\nELEMENTS AFTER HEAPSORT\n");
     heapsort(a,n);
-    for(i=1;i<=n;i++)
+    printf("Sorted array: ");
+    for(i=0;i<n;i++)
     printf("%d ",a[i]);
-    printf("\nCOUNT VALUE=%d\n",count);
-    printf("TIME COMPLEXITY IS:\n");
-    printf("SIZE\tASC\tDSC\tRAN\n");
-    for(i=16;i<=512;i=i*2)
+    printf("Time complex\n");
+    printf("size\tasc\tdsc\tran\n");
+    for(i=16;i<=1024;i=i*2)
     {
-        for(j=1;j<=i;j++)
+        for(j=0;j<i;j++)
         {
             a[j]=j;
-            b[j]=i-j+1;
-            c[j]=rand()%i;
+            b[j]=i-j;
+            c[j]=rand()%i+1;
         }
         count=0;
-        heapify(a,i);
         heapsort(a,i);
         c1=count;
         count=0;
-        heapify(b,i);
         heapsort(b,i);
         c2=count;
         count=0;
-        heapify(c,i);
         heapsort(c,i);
         c3=count;
         printf("%d\t%d\t%d\t%d\n",i,c1,c2,c3);
     }
     return 0;
-}
-void heapify(int a[size],int n)
-{
-    int i,j,k,v,flag;
-    for(i=n/2;i>=1;i--)
-    {
-        k=i;
-        v=a[k];
-        flag=0;
-        while(!flag&& (2*k)<=n)
-        {
-            j=2*k;
-            if(j<n)
-            {
-                if(a[j]<a[j+1])
-                j=j+1;
-            }
-            count++;
-            if(v>=a[j])
-            flag=1;
-            else
-            {
-                a[k]=a[j];
-                k=j;
-            }
-        }
-        a[k]=v;
-    }
-}
-void heapsort(int a[size],int n)
-{
-    int i;
-    for(i=n;i>=1;i--)
-    {
-        int temp=a[1];
-        a[1]=a[i];
-        a[i]=temp;
-        heapify(a,i-1);
-    }
 }
