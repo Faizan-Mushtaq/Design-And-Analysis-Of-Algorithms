@@ -1,57 +1,53 @@
 #include<stdio.h>
+#include<stdlib.h>
 #define max 20
-void dfs(int a[][max],int v[],int,int);
+void dfs(int a[][max],int vis[],int n,int i);
 int main()
 {
-    int n;
-    int a[max][max];
-    int v[10],i,j,count=0;
-    printf("ENTER THE NO OF NODES\n");
+    int n,a[max][max],i,j,start;
+    int vis[10],count=0;
+    printf("enter no of vet:");
     scanf("%d",&n);
-    printf("ENTER THE SYM ADJACENCY MATRIX\n");
-    for(i=0;i<n;i++)
-    for(j=0;j<n;j++)
-    {
-        scanf("%d",&a[i][j]);
-    }
-    printf("ADJACENCY MATRIX IS:\n");
+    printf("enter matrix\n");
     for(i=0;i<n;i++)
     {
         for(j=0;j<n;j++)
         {
-            printf("%d ",a[i][j]);
+            scanf("%d",&a[i][j]);
         }
-        printf("\n");
     }
+    printf("enter starting vet");
+    scanf("%d",&start);
     for(i=0;i<n;i++)
-    v[i]=0;
-
+    vis[i]=0;
+    printf("traversal for comp 1: ");
+    dfs(a,vis,n,start-1);
+    count++;
     for(i=0;i<n;i++)
     {
-        if (v[i]==0)
+        if(vis[i]==0)
         {
-            printf("TRAVERSAL FOR COMPONENT %d: ",count+1);
-            dfs(a,v,i,n);
+            printf("\ntraversal for component %d: ",count+1);
+            dfs(a,vis,n,i);
             count++;
             printf("\n");
         }
-
     }
     if(count==1)
-    {
-        printf("GRAPH IS CONNECTED\n");
-    }
-    else{
-        printf("GRAPH IS DISCONNECTED WITH %d COMPONENTS\n",count);
-    }
+    printf("\nG is connected\n");
+    else
+    printf("\nG is disconnected %d components\n",count);
+
     return 0;
 }
-void dfs(int a[][max],int v[],int i,int n)
+void dfs(int a[][max],int vis[],int n,int i)
 {
     int j;
-    v[i]=1;
-    printf("%d\t",i);
+    vis[i]=1;
+    printf("%d ",i+1);
     for(j=0;j<n;j++)
-    if(v[j]==0 && a[i][j]==1)
-    dfs(a,v,j,n);
+    {
+        if(a[i][j]==1&&vis[j]==0)
+        dfs(a,vis,n,j);
+    }
 }
