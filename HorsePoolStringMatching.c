@@ -10,6 +10,7 @@
     	  t[i]=m;
     	for (j=0;j<m-1;j++)
     	  t[p[j]]=m-1-j;
+          
     }
     int horspool(char src[],char p[]) {
     	int i,j,k,m,n;
@@ -21,9 +22,10 @@
     	while(i<n) {
     		k=0;
     		while((k<m)&&(p[m-1-k]==src[i-k]))
-    		   k++;
+    		   {k++;}
     		if(k==m)
-    		   return(i-m+1); else
+    		   return(i-m+1);
+                else
     		   i+=t[src[i]];
     	}
     	return -1;
@@ -35,7 +37,7 @@
     	scanf("%[^\n]",src);//gets(src); better use scanset
     	getchar();
     	printf("Enter the pattern to be searched:\n");
-    	scanf("%[^\n]",p);//gets(p); 
+    	scanf("%[^\n]",p);//gets(p);
     	shifttable(p);
     	pos=horspool(src,p);
     	if(pos>=0)
