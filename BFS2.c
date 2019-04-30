@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 int g[10][10]={},vis[10]={},n,m,c;
 void main()
 {
